@@ -1,50 +1,24 @@
-# Welcome to your Expo app 👋
+# Recallio - Your Digital Memory Assistant
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Recallio is an innovative application designed to help you save, organize, and recall your digital memories at the perfect moment. Whether it's a YouTube video, a social media reel, or any other type of digital content, Recallio enables you to store these items with descriptions and set reminders to bring them back to your attention when needed.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Save Digital Memories**: Capture and store links to digital content, such as YouTube videos, social media reels, articles, and more, along with custom descriptions.
+- **Set Reminders**: Receive notifications at a specific time to remind you of the content you've saved.
+- **Search & Recall**: Easily search through your stored memories and retrieve them when you need to revisit them.
+- **Organize by Categories**: Group and tag your memories for easier access and organization.
 
-   ```bash
-   npm install
-   ```
+## How It Works
 
-2. Start the app
+1. **Save a Memory**: You can save any digital content by sharing it directly to Recallio, or you can manually add the link and provide a keyword or brief description of why it's important or interesting.
+2. **Set a Reminder**: If you want to be reminded by Recallio, simply tap "Remind Me," and choose a time and date to be notified about your saved memory.
+3. **Search & Recall**: Use the search functionality to find specific memories and view them again when needed.
 
-   ```bash
-    npx expo start
-   ```
+## Why Recallio?
 
-In the output, you'll find options to open the app in a
+In today's fast-paced digital world, it’s easy to come across interesting or important content, but we often forget about it when we need it. Recallio serves as your personal digital assistant to help you remember and engage with the content you find valuable.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The app is currently in development. Once the app is published, you will be able to download it from the Google Play Store or Apple App Store. A link will also be provided here once it's available.
