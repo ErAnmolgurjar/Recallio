@@ -1,6 +1,7 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { StyleSheet } from "react-native";
@@ -35,6 +36,15 @@ function TabLayout() {
           }}
         />
         <Tabs.Screen
+          name="Categories"
+          options={{
+            title: "Categories",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="category" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
           name="Profile"
           options={{
             title: "User",
@@ -52,10 +62,10 @@ export default TabLayout;
 
 const styles = StyleSheet.create({
   tabStyle:{
-    marginBottom:8,
+    // marginBottom:8,
     paddingBottom:10,
     paddingTop:10,
     height:70,
-    borderRadius:60,
+    // borderRadius:60,
   },
 })

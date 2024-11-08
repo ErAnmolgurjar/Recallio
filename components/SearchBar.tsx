@@ -3,7 +3,7 @@ import React from 'react'
 import { useColorScheme } from 'react-native';
 
 
-export function SearchBar() {
+export function SearchBar({ placeholder = 'Enter keywords to search', SearchIn = "0" , Category = "0"}) {
 	const theme = useColorScheme() ?? 'light';
 	let backgroundColor = "#FAF9F6"
 	if(theme != "dark"){
@@ -11,7 +11,7 @@ export function SearchBar() {
 	}  
 	return (
 		<View style={[{ backgroundColor },styles.searchBarStyle]}>
-			<TextInput style={styles.searchBarTextStyle} placeholder='Enter keywords to search'></TextInput>
+			<TextInput style={styles.searchBarTextStyle} placeholder={placeholder}></TextInput>
 		</View>
 	)
 }
