@@ -7,7 +7,7 @@ import { MemoryCard } from "@/components/MemoryCard";
 
 function MyMind() {
   const memoryCards = Array.from({ length: 100 }); // Create an array of 10 elements
-  console.log(memoryCards);
+  const link = "";
   return (
     <>
       <ThemedView style={styles.mainContainer}>
@@ -16,7 +16,7 @@ function MyMind() {
         <ScrollView>
           <View style={styles.cardsContainer}>
             {memoryCards.map((_, index) => (
-              <MemoryCard text={index.toString()} key={index} />
+              <MemoryCard text={index.toString()} imageLink="https://images.pexels.com/photos/3752194/pexels-photo-3752194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" link = {link} key={index} />
             ))}
           </View>
         </ScrollView>

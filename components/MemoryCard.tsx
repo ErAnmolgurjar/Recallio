@@ -1,35 +1,54 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { useColorScheme } from "react-native";
+import { Link } from 'expo-router';
 
-export function MemoryCard({text = ""}){
+export function MemoryCard({ text = "", imageLink = "", link = "" }) {
+  const theme = useColorScheme() ?? "light";
+  let borderColor = theme === "dark" ? "#ffffff" : "#000000";
+  let backgroundColor = theme === "dark" ? "#ffffff" : "#000000";
+  let color = theme === "dark" ? "#000000" : "#ffffff";
+  const imageSource = imageLink
+    ? { uri: imageLink }
+    : require("../assets/images/no-image.png");
   return (
-    <View style={style.meoryCardStyle}>
-      <Image style={style.memoryCardBanner} source={require('../assets/images/car.jpg')}></Image>
-      <Text style={style.memoryCardText}>This is a long discription for this digital content {text}</Text>
-    </View>
-  )
+    <>
+    <Link href="/(MindDetails)/Details">
+      <View style={[style.meoryCardStyle, { borderColor }]}>
+        <Image style={style.memoryCardBanner} source={imageSource}></Image>
+        <Text style={[style.memoryCardText, { backgroundColor, color }]}>
+          This is a long discription for this digital content {text}
+        </Text>
+      </View>
+      </Link>
+    </>
+  );
 }
 
 const style = StyleSheet.create({
-    meoryCardStyle :{
-        // height:200,
-        width: 190,
-        // marginBottom:10,
-        borderTopLeftRadius:10,
-        borderTopRightRadius:10,
-    },
-    memoryCardBanner:{
-        height:200,
-        width: '100%',
-        borderTopLeftRadius:10,
-        borderTopRightRadius:10,
-    },
-    memoryCardText:{
-        height:40,
-        backgroundColor:'#ffffff',
-        borderBottomLeftRadius:10,
-        borderBottomRightRadius:10,
-        textAlign:"center",
-    }
-    
-})
+  meoryCardStyle: {
+    // height:200,
+    width: 190,
+    // marginBottom:10,
+    borderTopLeftRadius: 11,
+    borderTopRightRadius: 11,
+
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderBottomLeftRadius: 14,
+    borderBottomRightRadius: 14,
+  },
+  memoryCardBanner: {
+    height: 200,
+    width: "100%",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  memoryCardText: {
+    height: 40,
+    // backgroundColor:'#ffffff',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    textAlign: "center",
+  },
+});
