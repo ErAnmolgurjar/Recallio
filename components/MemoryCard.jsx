@@ -13,7 +13,10 @@ export function MemoryCard({ text = "", imageLink = "", link = "" }) {
     : require("../assets/images/no-image.png");
   return (
     <>
-    <Link href="/(MindDetails)/Details">
+    <Link href={{
+        pathname: "/(MindDetails)/Details", 
+        params: { text, imageSource }
+      }}>
       <View style={[style.meoryCardStyle, { borderColor }]}>
         <Image style={style.memoryCardBanner} source={imageSource}></Image>
         <Text style={[style.memoryCardText, { backgroundColor, color }]}>
