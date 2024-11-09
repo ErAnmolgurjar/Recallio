@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   memoryCardBanner: {
     height: 200,
     width: "100%",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius:15,
   },
 });

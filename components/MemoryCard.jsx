@@ -12,6 +12,7 @@ export function MemoryCard({ text = "", imageLink = "", link = "" }) {
     ? { uri: imageLink }
     : require("../app/appAssests/images/no-image.png");
   const discText = text ;
+  console.log(text);
   return (
     <>
     <Link href={{
@@ -36,7 +37,6 @@ const style = StyleSheet.create({
     // marginBottom:10,
     borderTopLeftRadius: 11,
     borderTopRightRadius: 11,
-
     borderStyle: "solid",
     borderWidth: 2,
     borderBottomLeftRadius: 14,
@@ -54,6 +54,5 @@ const style = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     textAlign: "center",
-    enum: 'clip',
   },
 });
