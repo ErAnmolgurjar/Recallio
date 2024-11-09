@@ -10,17 +10,18 @@ export function MemoryCard({ text = "", imageLink = "", link = "" }) {
   let color = theme === "dark" ? "#000000" : "#ffffff";
   const imageSource = imageLink
     ? { uri: imageLink }
-    : require("../assets/images/no-image.png");
+    : require("../app/appAssests/images/no-image.png");
+  const discText = text ;
   return (
     <>
     <Link href={{
-        pathname: "/(MindDetails)/Details", 
-        params: { text, imageSource }
+        pathname: "/(MindDetails)/1", 
+        params: { discText, imageLink }
       }}>
       <View style={[style.meoryCardStyle, { borderColor }]}>
         <Image style={style.memoryCardBanner} source={imageSource}></Image>
-        <Text style={[style.memoryCardText, { backgroundColor, color }]}>
-          This is a long discription for this digital content {text}
+        <Text numberOfLines={2} ellipsizeMode="tail" style={[style.memoryCardText, { backgroundColor, color }]}>
+          {discText}
         </Text>
       </View>
       </Link>
@@ -53,5 +54,6 @@ const style = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     textAlign: "center",
+    enum: 'clip',
   },
 });

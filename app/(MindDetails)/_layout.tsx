@@ -14,7 +14,9 @@ const _layout = () => {
     <>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
-          <Stack.Screen name="Details" />
+          <Stack.Screen name="[id]" options={{
+            headerTitle:"Details",
+          }}/>
         </Stack>
       </ThemeProvider>
     </>
