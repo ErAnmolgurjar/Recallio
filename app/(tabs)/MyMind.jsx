@@ -9,16 +9,20 @@ function MyMind() {
   const [images, setImages] = useState([]);
   const [displayedImages, setDisplayedImages] = useState([]);
   const [refreshing, setRefreshing] = React.useState(false);
-  const [currentIndex, setCurrentIndex] = useState(6);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
-  const fetchImages = async () => {
+  const fetchImages = async (limit = 10) => {
     try {
-      const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=10");
+      const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
       const data = await response.json();
-      setImages(data);
-      setDisplayedImages(data.slice(0, 6));
-      setRefreshing(false);
+      
+      setImages((prevImages) => [...prevImages, ...data]);
+      setDisplayedImages((prevDisplayed) => [...prevDisplayed, ...data]);
+      
+      if (data.length < limit) {
+        setHasMore(false);
+      }
     } catch (error) {
       console.error("Error fetching images:", error);
     }
@@ -30,66 +34,70 @@ function MyMind() {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+    setCurrentIndex(0);
+    setImages([]);
+    setDisplayedImages([]);
     fetchImages().finally(() => {
       setRefreshing(false);
     });
   }, []);
-  // const onRefresh = useCallback(() => {
-  //   setRefreshing(true);
-  //   setCurrentIndex(6);
-  //   setDisplayedImages(images.slice(0, 6));
-  //   // fetchImages().finally(() => {
-  //   //   setRefreshing(false);
-  //   // });
-  // }, [images]);
 
   const handleScroll = (event) => {
     const contentHeight = event.nativeEvent.contentSize.height;
     const layoutHeight = event.nativeEvent.layoutMeasurement.height;
     const offsetY = event.nativeEvent.contentOffset.y;
-    if (contentHeight - layoutHeight - offsetY < 20 && hasMore) {
+    const distanceFromBottom = contentHeight - layoutHeight - offsetY;
+    if (distanceFromBottom < 150) {
       loadMoreImages();
     }
   };
 
   const loadMoreImages = () => {
-    if (currentIndex >= images.length) {
-      setHasMore(false);
-      return;
-    }
+    // if (currentIndex >= images.length) {
+    //   // If no more images to load, set hasMore to false
+    //   setHasMore(false);
+    //   return;
+    // }
 
-    const nextIndex = currentIndex + 6;
-    const newImages = images.slice(currentIndex, nextIndex); 
+    const nextIndex = currentIndex + 10;
+    const newImages = images.slice(currentIndex, nextIndex);
     setDisplayedImages((prevImages) => [...prevImages, ...newImages]);
     setCurrentIndex(nextIndex);
+    fetchImages().finally(() => {
+      setRefreshing(false);
+    });
   };
 
   const memoryCards = Array.from({ length: 100 });
   const link = "";
+  
   return (
     <>
       <ThemedView style={styles.mainContainer}>
         <ThemedText type="title">My Mind</ThemedText>
         <SearchBar placeholder="Enter keywords to search in mind" />
-        <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} onScroll={handleScroll} scrollEventThrottle={400}>
+        <ScrollView 
+          showsVerticalScrollIndicator={false}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} 
+          onScroll={handleScroll} 
+          scrollEventThrottle={100}
+        >
           <View style={styles.cardsContainer}>
-          {images.map((imageData, index) => (
+            {displayedImages.map((displayedImage, index) => (
               <MemoryCard
-                text={"Image " + (index+1)}
-                imageLink={imageData.url}
+                text={"Image " + (index + 1)}
+                imageLink={displayedImage.url}
                 link=""
                 key={index}
               />
             ))}
-            {/* {memoryCards.map((_, index) => (
-              <MemoryCard text={index.toString()} imageLink="https://www.shutterstock.com/image-photo/orange-cat-sits-looking-straight-600nw-2479857351.jpg" link = {link} key={index} />
-            ))} */}
           </View>
         </ScrollView>
       </ThemedView>
     </>
   );
 }
+
 
 export default MyMind;
 

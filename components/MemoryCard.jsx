@@ -12,7 +12,7 @@ export function MemoryCard({ text = "", imageLink = "", link = "" }) {
     ? { uri: imageLink }
     : require("../app/appAssests/images/no-image.png");
   const discText = text ;
-  console.log(text);
+  // console.log(text);
   return (
     <>
     <Link href={{
