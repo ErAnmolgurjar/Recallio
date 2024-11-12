@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/adaptive-icon.png",
-    "scheme": "myapp",
+    "scheme": "recallio_your_digital_memory_assistant",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -13,9 +13,32 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "bundleIdentifier": "com.recallio.app",
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "recallio_your_digital_memory_assistant"
+            ]
+          }
+        ]
+      },
       "supportsTablet": true
     },
     "android": {
+      "package": "com.recallio.app",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": {
+            "scheme": "recallio_your_digital_memory_assistant"
+          },
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -31,6 +54,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "64b9c3ee-542e-487e-bb02-4b1f5f3f987a"
+      }
     }
   }
 }

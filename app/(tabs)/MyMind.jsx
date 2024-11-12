@@ -1,5 +1,5 @@
 import React , { useEffect, useState, useCallback } from "react";
-import { RefreshControl, ScrollView, View, StyleSheet } from "react-native";
+import { RefreshControl, ScrollView, View, StyleSheet, ActivityIndicator } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { SearchBar } from "@/components/SearchBar";
@@ -10,10 +10,12 @@ function MyMind() {
   const [displayedImages, setDisplayedImages] = useState([]);
   const [refreshing, setRefreshing] = React.useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardloading, setcardloading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
 
   const fetchImages = async (limit = 10) => {
     try {
+      setcardloading(true);
       const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
       const data = await response.json();
       
@@ -23,8 +25,10 @@ function MyMind() {
       if (data.length < limit) {
         setHasMore(false);
       }
+      setcardloading(false);
     } catch (error) {
       console.error("Error fetching images:", error);
+      setcardloading(false);
     }
   };
 
@@ -91,6 +95,7 @@ function MyMind() {
                 key={index}
               />
             ))}
+            {cardloading && <ActivityIndicator size="large" />}
           </View>
         </ScrollView>
       </ThemedView>
